@@ -16,7 +16,7 @@
           //labels: ["SUN","sun", "MON", "mon", "TUE","tue", "WED", "wed", "THU", "thu", "FRI", "fri", "SAT"],
           labels: ["20:00","20:05", "20:10", "20:15", "20:20", "20:25", "20:30", "20:35", "20:40", "20:45", "20:50", "20:55","21:00"],
           datasets: [{
-              label: 'This week',
+              label: '最大容量',
               data: [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300],
               backgroundColor: saleGradientBg,
               borderColor: [
@@ -33,7 +33,7 @@
               //pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)'],
               //pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
           },{
-            label: 'Last week',
+            label: '當前容量',
             data: [30, 150, 190, 250, 120, 150, 130, 20, 30, 15, 40, 95, 180],
             backgroundColor: saleGradientBg2,
             borderColor: [
@@ -41,11 +41,12 @@
             ],
             borderWidth: 1.5,
             fill: true, // 3: no fill
+            pointRadius: 0,
             pointBorderWidth: 1,
-            pointRadius: [0, 0, 0, 4, 0],
-            pointHoverRadius: [0, 0, 0, 2, 0],
-            pointBackgroundColor: ['#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)'],
-              pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
+            //pointRadius: [0, 0, 0, 4, 0],
+            //pointHoverRadius: [0, 0, 0, 2, 0],
+            //pointBackgroundColor: ['#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)'],
+              //pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff','#fff',],
         }]
       };
 
@@ -111,6 +112,7 @@
           data: salesTopData,
           options: salesTopOptions
       });
+      //legend code;
       document.getElementById('performance-line-legend').innerHTML = salesTop.generateLegend();
     }
     if ($("#performaneLine-dark").length) {
@@ -380,8 +382,10 @@
       var marketingOverviewData = {
           labels: ["20:00","20:05", "20:10", "20:15", "20:20", "20:25", "20:30", "20:35", "20:40", "20:45", "20:50", "20:55"],
           datasets: [{
-              label: 'Last week',
+              label: '等待人數',
               data: [110, 220, 200, 190, 220, 110, 210, 110, 205, 202, 201, 150],
+              //histogram
+              //data: [110, 220, 200, 190, 220, 110, 210, 110, 205, 202, 201],
               backgroundColor: "#52CDFF",
               borderColor: [
                   '#52CDFF',
@@ -430,7 +434,9 @@
                 ticks: {
                   beginAtZero: false,
                   autoSkip: true,
+                  //autoSkip: false,
                   maxTicksLimit: 12,
+                  //maxTicksLimit: 11,
                   fontSize: 10,
                   color:"#6B778C"
                 }
@@ -473,7 +479,7 @@
           //labels: ["JAN","FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
           labels: ["20:00","20:05", "20:10", "20:15", "20:20", "20:25", "20:30", "20:35", "20:40", "20:45", "20:50", "20:55"],
           datasets: [{
-              label: 'Last week',
+              //label: 'Last week',
               data: [110, 220, 200, 190, 220, 110, 210, 110, 205, 202, 201, 150],
               backgroundColor: "#52CDFF",
               borderColor: [
@@ -483,7 +489,7 @@
               fill: true, // 3: no fill
 
           },{
-            label: 'This week',
+            //label: 'This week',
             data: [215, 290, 210, 250, 290, 230, 290, 210, 280, 220, 190, 300],
             backgroundColor: "#1F3BB3",
             borderColor: [
@@ -558,7 +564,7 @@
           data: marketingOverviewDataDark,
           options: marketingOverviewOptionsDark
       });
-      document.getElementById('marketing-overview-legend').innerHTML = marketingOverviewDark.generateLegend();
+      //document.getElementById('marketing-overview-legend').innerHTML = marketingOverviewDark.generateLegend();
     }
     if ($("#doughnutChart").length) {
       var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
