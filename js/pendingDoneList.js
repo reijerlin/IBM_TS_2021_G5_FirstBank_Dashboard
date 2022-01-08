@@ -34,7 +34,7 @@
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'GET',
-                url: 'http://localhost:8088/bank/loan/capacity?waitingSize=10&finishedSize=5',
+                url: 'http://localhost:8080/bank/loan/capacity?waitingSize=10&finishedSize=5',
                 success: (response) => {
                     resolve(response);
                 }
