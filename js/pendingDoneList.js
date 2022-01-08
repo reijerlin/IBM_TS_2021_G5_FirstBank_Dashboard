@@ -4,11 +4,27 @@
         if ($("#pending-list").length) {
             setInterval(() => {
                 getCapacity().then((response) => {
+
                     const finishedList = response.finishedList;
                     const waitingList = response.waitingList;
 
-                    updatePendingLiHtmlElement(waitingList);
-                    updateDoneLiHtmlElement(finishedList);
+                    // 為空的時候，顯示訊息
+                    if(waitingList && waitingList.length === 0)
+                        document.getElementById('pending-list').innerHTML = '目前無人等待中';
+                    if(finishedList && finishedList.length === 0)
+                        document.getElementById('done-list').innerHTML = '目前無完成';
+
+                    // 不為空的時候，才做清空
+                    if(document.getElementById('done-list').innerHTML !== '目前無完成') {
+                        cleanInnerHtmlById('done-list');
+                    }
+                    if(document.getElementById('pending-list').innerHTML !== '目前無人等待中')
+                        cleanInnerHtmlById('pending-list');
+
+                    if(waitingList && waitingList.length !== 0)
+                        updatePendingLiHtmlElement(waitingList);
+                    if(finishedList && finishedList.length !== 0)
+                        updateDoneLiHtmlElement(finishedList);
                 });
             }, 2000);
         }
@@ -82,6 +98,10 @@
 
     function setInnerHtmlInID(id, innerHtml) {
         document.getElementById(id).innerHTML = innerHtml;
+    }
+
+    function cleanInnerHtmlById(id) {
+        document.getElementById(id).innerHTML = '';
     }
 
 })(jQuery);
